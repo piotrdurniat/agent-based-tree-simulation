@@ -74,9 +74,9 @@
 											"font": "Arial;13;0",
 											"left": 2435,
 											"top": 864,
-											"width": 101.14990234375,
+											"width": 149.56982421875,
 											"height": 13,
-											"text": "(from tree_organ)"
+											"text": "(from branch_component)"
 										},
 										{
 											"_type": "LabelView",
@@ -528,9 +528,9 @@
 											"font": "Arial;13;0",
 											"left": 1363,
 											"top": 944,
-											"width": 101.14990234375,
+											"width": 149.56982421875,
 											"height": 13,
-											"text": "(from tree_organ)"
+											"text": "(from branch_component)"
 										},
 										{
 											"_type": "LabelView",
@@ -848,9 +848,9 @@
 											"font": "Arial;13;0",
 											"left": 1587,
 											"top": 928,
-											"width": 101.14990234375,
+											"width": 149.56982421875,
 											"height": 13,
-											"text": "(from tree_organ)"
+											"text": "(from branch_component)"
 										},
 										{
 											"_type": "LabelView",
@@ -1097,9 +1097,9 @@
 											"font": "Arial;13;0",
 											"left": -77,
 											"top": 592,
-											"width": 101.14990234375,
+											"width": 149.56982421875,
 											"height": 13,
-											"text": "(from tree_organ)"
+											"text": "(from branch_component)"
 										},
 										{
 											"_type": "LabelView",
@@ -2847,7 +2847,7 @@
 											"top": 358,
 											"width": 159.33251953125,
 											"height": 13,
-											"text": "(from tree_simulation)"
+											"text": "(from simulation)"
 										},
 										{
 											"_type": "LabelView",
@@ -4224,9 +4224,9 @@
 											"font": "Arial;13;0",
 											"left": 400,
 											"top": 160,
-											"width": 126.42626953125,
+											"width": 149.56982421875,
 											"height": 13,
-											"text": "(from tree_organ)"
+											"text": "(from branch_component)"
 										},
 										{
 											"_type": "LabelView",
@@ -14070,7 +14070,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "tree_simulation",
+					"name": "simulation",
 					"ownedElements": [
 						{
 							"_type": "UMLClass",
