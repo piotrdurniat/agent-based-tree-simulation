@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.lang.Math;
 
 import simulation.tree.tree_organ.TreeOrgan;
+import simulation.tree.tree_organ.branch_component.subcomponents.Leaf;
 
 public class Branch extends BranchComponent {
 
@@ -56,6 +57,10 @@ public class Branch extends BranchComponent {
             this.makeBranch(); // Temporary solution for testing
         }
 
+        if (random.nextInt(100) < 1) {
+            this.makeLeaf(); // Temporary solution for testing
+        }
+
         if (length < 200) {
             length += 0.2;
         }
@@ -73,7 +78,7 @@ public class Branch extends BranchComponent {
     /**
      * @return float Returns the length of this branch
      */
-    float getLength() {
+    public float getLength() {
         return length;
     }
 
@@ -103,8 +108,13 @@ public class Branch extends BranchComponent {
         float angle = (float) angleOptions.get(index);
         angleOptions.remove(index);
 
-        Branch childBranch = new Branch(this, angle, 1, 1);
+        BranchComponent childBranch = new Branch(this, angle, 1, 1);
 
         components.add(childBranch);
+    }
+
+    private void makeLeaf() {
+        BranchComponent leaf = new Leaf(this);
+        components.add(leaf);
     }
 }
