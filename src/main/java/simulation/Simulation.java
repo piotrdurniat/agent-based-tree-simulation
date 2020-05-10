@@ -8,6 +8,7 @@ public class Simulation {
     public static Simulation simulation;
 
     private Tree tree;
+    private int maxIterations = 1600;
 
     /**
      * Constructor for creating the Simulation
@@ -16,7 +17,7 @@ public class Simulation {
         tree = new Tree();
 
         Window.setup(tree);
-        IntervalTasks.setup(tree);
+        IntervalTasks.setup(tree, maxIterations);
     }
 
     /**

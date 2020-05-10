@@ -43,7 +43,7 @@ class BranchGraphics extends ComponentGraphics {
         Graphics2D g2d = (Graphics2D) g;
 
         g2d.setColor(new Color(255, 255, 255, 150));
-        g2d.setStroke(new BasicStroke(branch.getDiameter()));
+        g2d.setStroke(new BasicStroke(branch.getDiameter(), BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND));
 
         Point2D end = getEnd();
 
