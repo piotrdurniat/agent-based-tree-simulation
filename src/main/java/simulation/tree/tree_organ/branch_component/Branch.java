@@ -6,6 +6,7 @@ import java.lang.Math;
 
 import simulation.tree.tree_organ.TreeOrgan;
 import simulation.tree.tree_organ.branch_component.subcomponents.Leaf;
+import simulation.tree.tree_organ.branch_component.subcomponents.Flower;
 
 public class Branch extends BranchComponent {
 
@@ -57,8 +58,12 @@ public class Branch extends BranchComponent {
             this.makeBranch(); // Temporary solution for testing
         }
 
-        if (random.nextInt(100) < 1) {
+        if (random.nextInt(100) < 0.5) {
             this.makeLeaf(); // Temporary solution for testing
+        }
+
+        if (random.nextInt(1000) < 1) {
+            this.makeFlower(); // Temporary solution for testing
         }
 
         if (length < 200) {
@@ -116,5 +121,10 @@ public class Branch extends BranchComponent {
     private void makeLeaf() {
         BranchComponent leaf = new Leaf(this);
         components.add(leaf);
+    }
+
+    private void makeFlower() {
+        BranchComponent flower = new Flower(this);
+        components.add(flower);
     }
 }
