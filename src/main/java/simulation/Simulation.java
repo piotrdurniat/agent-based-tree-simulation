@@ -1,11 +1,14 @@
 package simulation;
 
+import java.util.Random;
+
 import simulation.graphics.Window;
 import simulation.tree.Tree;
 
 public class Simulation {
 
     public static Simulation simulation;
+    public static Random random = new Random(1);
 
     private final Tree tree;
     private final Environment environment;

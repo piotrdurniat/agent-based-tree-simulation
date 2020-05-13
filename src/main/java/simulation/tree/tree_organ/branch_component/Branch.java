@@ -1,6 +1,5 @@
 package simulation.tree.tree_organ.branch_component;
 
-import java.util.Random;
 import java.util.ArrayList;
 import java.lang.Math;
 
@@ -15,7 +14,6 @@ public class Branch extends BranchComponent {
     private float diameter;
 
     private ArrayList<BranchComponent> components;
-    private Random random;
 
     private ArrayList<Float> angleOptions;
 
@@ -45,7 +43,6 @@ public class Branch extends BranchComponent {
         components = new ArrayList<BranchComponent>();
 
         graphics = new BranchGraphics(this);
-        random = new Random();
     }
 
     @Override

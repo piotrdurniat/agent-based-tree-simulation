@@ -1,9 +1,10 @@
 package simulation.tree.tree_organ.branch_component.subcomponents;
 
+import java.util.Random;
+
+import simulation.Simulation;
 import simulation.graphics.ComponentGraphics;
 import simulation.tree.tree_organ.branch_component.Branch;
-
-import java.util.Random;
 
 public abstract class SubcomponentGraphics extends ComponentGraphics {
     private Random random;
@@ -19,8 +20,7 @@ public abstract class SubcomponentGraphics extends ComponentGraphics {
      */
     SubcomponentGraphics(BranchSubcomponent component) {
         this.component = component;
-        random = new Random();
-
+        this.random = Simulation.random;
         this.position = random.nextFloat();
         this.direction = random.nextInt(2) - 1;
     }
