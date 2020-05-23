@@ -16,14 +16,15 @@ public class IntervalTasks extends TimerTask {
     /**
      * @param tree Tree object passed to evaluate it's turns on every interval
      */
-    public static void setup(Tree tree, int maxIterations) {
+    public static void setup(Tree tree) {
 
         IntervalTasks.tree = tree;
-        IntervalTasks.maxIterations = maxIterations;
 
         timer = new Timer();
         TimerTask task = new IntervalTasks();
         timer.schedule(task, 200, 16);
+
+        maxIterations = Integer.parseInt(Configuration.getProperty("maxIterations"));
     }
 
     /**

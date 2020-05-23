@@ -12,7 +12,6 @@ public class Simulation {
 
     private final Tree tree;
     private final Environment environment;
-    private final int maxIterations = 1600;
 
     /**
      * Constructor for creating the Simulation
@@ -20,9 +19,8 @@ public class Simulation {
     Simulation() {
         tree = new Tree();
         environment = new Environment();
-
         Window.setup(tree);
-        IntervalTasks.setup(tree, maxIterations);
+        IntervalTasks.setup(tree);
     }
 
     Environment getEnvironment() {
@@ -33,6 +31,7 @@ public class Simulation {
      * @param args Main function arguments
      */
     public static void main(final String[] args) {
+        Configuration.loadConfig();
         simulation = new Simulation();
     }
 
