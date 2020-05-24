@@ -30,6 +30,12 @@ public class Configuration {
     public static float maxLeafLength;
     public static float leafGrowthSpeed;
 
+    // Properties related to flower:
+    public static float glucosePerFlower;
+    public static float flowerMinLight;
+    public static float flowerMaxDiameter;
+    public static float flowerGrowthSpeed;
+
     /**
      * Reads configuration file and parses property values to variables
      */
@@ -54,6 +60,11 @@ public class Configuration {
             maxLeafLength = Float.parseFloat(getProperty("maxLeafLength"));
             leafGrowthSpeed = Float.parseFloat(getProperty("leafGrowthSpeed"));
             leafMinLight = Float.parseFloat(getProperty("leafMinLight"));
+
+            glucosePerFlower = Float.parseFloat(getProperty("glucosePerFlower"));
+            flowerMinLight = Float.parseFloat(getProperty("flowerMinLight"));
+            flowerMaxDiameter = Float.parseFloat(getProperty("flowerMaxDiameter"));
+            flowerGrowthSpeed = Float.parseFloat(getProperty("flowerGrowthSpeed"));
 
         } catch (Exception exception) {
             System.out.println(exception);

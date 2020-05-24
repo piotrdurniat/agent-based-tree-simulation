@@ -7,7 +7,7 @@ import java.awt.Color;
 
 class FlowerGraphics extends SubcomponentGraphics {
 
-    private final float size = 15;
+    private Flower flower;
 
     /**
      * Constructor for creating FlowerGraphics object
@@ -16,6 +16,7 @@ class FlowerGraphics extends SubcomponentGraphics {
      */
     FlowerGraphics(Flower flower) {
         super(flower);
+        this.flower = flower;
     }
 
     /**
@@ -26,9 +27,10 @@ class FlowerGraphics extends SubcomponentGraphics {
 
         g2d.setColor(new Color(0, 0, 255, 150));
 
+        float diameter = flower.getDiameter();
         float y = getY();
-        float x = direction * size;
+        float x = direction * diameter;
 
-        g2d.fill(new Ellipse2D.Float(x, y, size, size));
+        g2d.fill(new Ellipse2D.Float(x, y, diameter, diameter));
     }
 }

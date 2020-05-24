@@ -52,20 +52,6 @@ public class Leaf extends BranchSubcomponent {
     }
 
     /**
-     * Removes this leaf from parent branch
-     */
-    private void fall() {
-        parentBranch.removeComponent(this);
-    }
-
-    /**
-     * Takes water from parent branch and returns it's amount
-     */
-    public float getWater() {
-        return parentBranch.getWater();
-    }
-
-    /**
      * Does photosynthesis. Takes light, CO2 and water and turns it into glucose.
      */
     private void doPhotosynthesis() {
