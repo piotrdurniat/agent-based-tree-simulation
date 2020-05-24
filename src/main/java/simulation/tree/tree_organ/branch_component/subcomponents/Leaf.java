@@ -38,7 +38,7 @@ public class Leaf extends BranchSubcomponent {
             return;
         float glucose = parentBranch.getGlucose(1);
         if (glucose > 0) {
-            length += 0.2;
+            length += Configuration.leafGrowthSpeed;
         }
     }
 

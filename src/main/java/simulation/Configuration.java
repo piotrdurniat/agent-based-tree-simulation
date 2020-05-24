@@ -26,6 +26,7 @@ public class Configuration {
     public static float angleBetweenBranches;
 
     public static float maxLeafLength;
+    public static float leafGrowthSpeed;
 
     static void loadConfig() {
         try {
@@ -49,6 +50,7 @@ public class Configuration {
             angleBetweenBranches = Float.parseFloat(getProperty("angleBetweenBranches"));
 
             maxLeafLength = Float.parseFloat(getProperty("maxLeafLength"));
+            leafGrowthSpeed = Float.parseFloat(getProperty("leafGrowthSpeed"));
 
         } catch (Exception exception) {
             System.out.println(exception);
