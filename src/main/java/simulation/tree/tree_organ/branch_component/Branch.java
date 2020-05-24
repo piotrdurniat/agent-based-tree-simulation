@@ -1,13 +1,13 @@
 package simulation.tree.tree_organ.branch_component;
 
 import java.util.ArrayList;
-import java.lang.Math;
 
 import simulation.Configuration;
 import simulation.Simulation;
 import simulation.tree.tree_organ.TreeOrgan;
 import simulation.tree.tree_organ.branch_component.subcomponents.Leaf;
 import simulation.tree.tree_organ.branch_component.subcomponents.Flower;
+import simulation.tree.tree_organ.branch_component.subcomponents.Fruit;
 
 public class Branch extends BranchComponent {
 
@@ -62,17 +62,11 @@ public class Branch extends BranchComponent {
             component.evaluateTurn();
         }
 
-        if (randomEvent(Configuration.newBranchProbability)) {
-            this.makeBranch();
-        }
+        checkNewBranchRequirements();
 
-        if (randomEvent(Configuration.newLeafProbability) && getLight() >= Configuration.leafMinLight) {
-            this.makeLeaf();
-        }
+        checkNewLeafRequirements();
 
-        // if (randomEvent(Configuration.newFlowerProbability)) {
-        // this.makeFlower();
-        // }
+        checkNewFlowerRequirements();
 
         grow();
     }
@@ -143,28 +137,6 @@ public class Branch extends BranchComponent {
     }
 
     /**
-     * Creates new branch and adds it to this branch's components
-     */
-    private void makeBranch() {
-        if (availableAngles.size() == 0) {
-            return;
-        }
-
-        if (getGlucose(Configuration.glucosePerBranch) == 0) {
-            return;
-        }
-
-        int index = random.nextInt(availableAngles.size());
-        float angle = (float) availableAngles.get(index);
-        availableAngles.remove(index);
-
-        Branch childBranch = new Branch(this, angle, 1, 1);
-
-        branches.add(childBranch);
-        components.add((BranchComponent) childBranch);
-    }
-
-    /**
      * @return int Returns number of branches that are above this branch and
      *         connected to it
      */
@@ -231,6 +203,66 @@ public class Branch extends BranchComponent {
     }
 
     /**
+     * Checks the requirements for creating a new branch.
+     * 
+     * Creates a new branch if all of the requirements are met
+     */
+    private void checkNewBranchRequirements() {
+        if (!randomEvent(Configuration.newBranchProbability))
+            return;
+        if (availableAngles.size() == 0)
+            return;
+        if (getGlucose(Configuration.glucosePerBranch) == 0)
+            return;
+
+        makeBranch();
+    }
+
+    /**
+     * Checks the requirements for creating a new leaf.
+     * 
+     * Creates a new leaf if all of the requirements are met
+     */
+    private void checkNewLeafRequirements() {
+        if (!randomEvent(Configuration.newLeafProbability))
+            return;
+        if (getLight() < Configuration.leafMinLight)
+            return;
+
+        makeLeaf();
+    }
+
+    /**
+     * Checks all requirements for creating a new flower.
+     * 
+     * Creates a new flower if all of the requirements are met
+     */
+    private void checkNewFlowerRequirements() {
+        if (!randomEvent(Configuration.newFlowerProbability))
+            return;
+        if (getGlucose(Configuration.glucosePerFlower) == 0)
+            return;
+        if (getLight() < Configuration.flowerMinLight)
+            return;
+
+        makeFlower();
+    }
+
+    /**
+     * Creates new branch and adds it to this branch's components
+     */
+    private void makeBranch() {
+        int index = random.nextInt(availableAngles.size());
+        float angle = (float) availableAngles.get(index);
+        availableAngles.remove(index);
+
+        Branch childBranch = new Branch(this, angle, 1, 1);
+
+        branches.add(childBranch);
+        components.add((BranchComponent) childBranch);
+    }
+
+    /**
      * Creates a new leaf and adds it to the components list
      */
     private void makeLeaf() {
@@ -244,5 +276,10 @@ public class Branch extends BranchComponent {
     private void makeFlower() {
         BranchComponent flower = new Flower(this);
         components.add(flower);
+    }
+
+    public void makeFruit() {
+        BranchComponent fruit = new Fruit(this);
+        components.add(fruit);
     }
 }

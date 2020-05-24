@@ -25,6 +25,7 @@ class TreeGraphics extends ComponentGraphics {
         ArrayList<TreeOrgan> organs = tree.getTreeOrgans();
 
         for (TreeOrgan organ : new ArrayList<TreeOrgan>(organs)) {
+            g.translate(0, -20);
             organ.getGraphics().show(g);
         }
     }
