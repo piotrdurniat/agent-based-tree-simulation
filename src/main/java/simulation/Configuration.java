@@ -38,6 +38,8 @@ public class Configuration {
 
     // Properties related to fruit:
     public static float glucosePerFruit;
+    public static float fruitRipeningSpeed;
+    public static float fruitSize;
 
     /**
      * Reads configuration file and parses property values to variables
@@ -70,7 +72,8 @@ public class Configuration {
             flowerGrowthSpeed = Float.parseFloat(getProperty("flowerGrowthSpeed"));
 
             glucosePerFruit = Float.parseFloat(getProperty("glucosePerFruit"));
-
+            fruitRipeningSpeed = Float.parseFloat(getProperty("fruitRipeningSpeed"));
+            fruitSize = Float.parseFloat(getProperty("fruitSize"));
         } catch (Exception exception) {
             System.out.println(exception);
         }
