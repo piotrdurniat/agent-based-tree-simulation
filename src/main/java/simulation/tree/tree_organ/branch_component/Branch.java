@@ -7,6 +7,7 @@ import simulation.Simulation;
 import simulation.tree.tree_organ.TreeOrgan;
 import simulation.tree.tree_organ.branch_component.subcomponents.Leaf;
 import simulation.tree.tree_organ.branch_component.subcomponents.Flower;
+import simulation.tree.tree_organ.branch_component.subcomponents.Fruit;
 
 public class Branch extends BranchComponent {
 
@@ -275,5 +276,10 @@ public class Branch extends BranchComponent {
     private void makeFlower() {
         BranchComponent flower = new Flower(this);
         components.add(flower);
+    }
+
+    public void makeFruit() {
+        BranchComponent fruit = new Fruit(this);
+        components.add(fruit);
     }
 }
