@@ -5,9 +5,9 @@ import java.io.InputStream;
 import java.util.Properties;
 
 public class Configuration {
-    static private Properties properties = new Properties();
-    static private String filePath = "src/simulation.config";
-    static private InputStream inputStream;
+    private static Properties properties = new Properties();
+    private static String filePath = "src/simulation.config";
+    private static InputStream inputStream;
 
     public static int maxIterations;
     public static float leafMinLight;
