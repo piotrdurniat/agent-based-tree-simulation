@@ -13,4 +13,8 @@ public class Fruit extends BranchSubcomponent {
     public void evaluateTurn() {
 
     }
+
+    public float getWater() {
+        return parentBranch.getWater();
+    }
 }

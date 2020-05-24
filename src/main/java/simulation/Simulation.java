@@ -23,7 +23,7 @@ public class Simulation {
         IntervalTasks.setup(tree);
     }
 
-    Environment getEnvironment() {
+    public Environment getEnvironment() {
         return environment;
     }
 

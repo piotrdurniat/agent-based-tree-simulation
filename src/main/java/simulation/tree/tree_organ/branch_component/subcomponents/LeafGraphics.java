@@ -7,7 +7,7 @@ import java.awt.Color;
 
 class LeafGraphics extends SubcomponentGraphics {
 
-    private final float length = 10;
+    Leaf leaf;
 
     /**
      * Constructor for creating LeafGraphics object
@@ -16,6 +16,7 @@ class LeafGraphics extends SubcomponentGraphics {
      */
     LeafGraphics(Leaf leaf) {
         super(leaf);
+        this.leaf = leaf;
     }
 
     /**
@@ -26,6 +27,7 @@ class LeafGraphics extends SubcomponentGraphics {
 
         g2d.setColor(new Color(0, 255, 0, 150));
 
+        float length = leaf.getLength();
         float y = getY();
         float x = direction * length;
 

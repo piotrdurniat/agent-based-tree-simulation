@@ -13,4 +13,8 @@ public class Flower extends BranchSubcomponent {
     public void evaluateTurn() {
 
     }
+
+    public float getWater() {
+        return parentBranch.getWater();
+    }
 }

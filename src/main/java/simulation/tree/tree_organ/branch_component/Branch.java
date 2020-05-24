@@ -3,6 +3,8 @@ package simulation.tree.tree_organ.branch_component;
 import java.util.ArrayList;
 import java.lang.Math;
 
+import simulation.Configuration;
+import simulation.Simulation;
 import simulation.tree.tree_organ.TreeOrgan;
 import simulation.tree.tree_organ.branch_component.subcomponents.Leaf;
 import simulation.tree.tree_organ.branch_component.subcomponents.Flower;
@@ -12,12 +14,22 @@ public class Branch extends BranchComponent {
     private float angle;
     private float length;
     private float diameter;
+    private float glucose;
 
     private ArrayList<BranchComponent> components;
+    private ArrayList<Branch> branches;
+    private ArrayList<Float> availableAngles;
 
-    private ArrayList<Float> angleOptions;
+    private static final ArrayList<Float> angles = new ArrayList<>();
+    private static final int maxBranchNum = Configuration.branchingFactor;
+    private static final float angleBetweenBranches = Configuration.angleBetweenBranches;
 
-    private static final int maxBranchNum = 6;
+    static {
+        float minAngle = -(0.5f * (maxBranchNum - 1)) * angleBetweenBranches;
+        for (int i = 0; i < maxBranchNum; i++) {
+            angles.add(minAngle + i * angleBetweenBranches);
+        }
+    }
 
     /**
      * Constructor for creating a Branch object
@@ -33,41 +45,73 @@ public class Branch extends BranchComponent {
         this.length = length;
         this.diameter = diameter;
 
-        angleOptions = new ArrayList<Float>();
-
-        for (int i = 0; i < maxBranchNum / 2; i++) {
-            angleOptions.add((float) ((2 * i + 1) * Math.PI / 16));
-            angleOptions.add((float) (-(2 * i + 1) * Math.PI / 16));
-        }
+        availableAngles = new ArrayList<Float>(angles);
 
         components = new ArrayList<BranchComponent>();
+        branches = new ArrayList<Branch>();
 
         graphics = new BranchGraphics(this);
+
+        // Initial glucose value
+        this.glucose = Configuration.glucosePerBranch * 0.3f;
     }
 
     @Override
     public void evaluateTurn() {
-        for (BranchComponent component : components) {
+        for (BranchComponent component : new ArrayList<BranchComponent>(components)) {
             component.evaluateTurn();
         }
 
-        if (length > 50 && random.nextInt(100) < 1) {
-            this.makeBranch(); // Temporary solution for testing
+        if (randomEvent(Configuration.newBranchProbability)) {
+            this.makeBranch();
         }
 
-        if (random.nextInt(100) < 0.5) {
-            this.makeLeaf(); // Temporary solution for testing
+        if (randomEvent(Configuration.newLeafProbability) && getLight() >= Configuration.leafMinLight) {
+            this.makeLeaf();
         }
 
-        if (random.nextInt(1000) < 1) {
-            this.makeFlower(); // Temporary solution for testing
-        }
+        // if (randomEvent(Configuration.newFlowerProbability)) {
+        // this.makeFlower();
+        // }
 
-        if (length < 200) {
-            length += 0.2;
-        }
+        grow();
+    }
 
-        diameter += 0.008;
+    /**
+     * Makes the branch grow
+     */
+    private void grow() {
+        growInLength();
+        growInDiameter();
+    }
+
+    /**
+     * Makes this branch grow in length
+     * 
+     * Branch grows faster if it has a lot of water and glucose
+     */
+    private void growInLength() {
+        length += getWater() * getGlucose(1) / 5;
+    }
+
+    /**
+     * Makes the branch grow in diameter.
+     * 
+     * The less water it has, the slower it will grow in diameter, so that the top
+     * branches are thiner
+     */
+    private void growInDiameter() {
+        diameter += 0.006 * getWater();
+    }
+
+    /**
+     * Returns boolean value with a given probability
+     * 
+     * @param probability float The probability of returning true
+     * @return boolean Returns true or false with a given probability
+     */
+    boolean randomEvent(float probability) {
+        return random.nextFloat() < probability;
     }
 
     /**
@@ -102,24 +146,101 @@ public class Branch extends BranchComponent {
      * Creates new branch and adds it to this branch's components
      */
     private void makeBranch() {
-        if (angleOptions.size() == 0) {
+        if (availableAngles.size() == 0) {
             return;
         }
 
-        int index = random.nextInt(angleOptions.size());
-        float angle = (float) angleOptions.get(index);
-        angleOptions.remove(index);
+        if (getGlucose(Configuration.glucosePerBranch) == 0) {
+            return;
+        }
 
-        BranchComponent childBranch = new Branch(this, angle, 1, 1);
+        int index = random.nextInt(availableAngles.size());
+        float angle = (float) availableAngles.get(index);
+        availableAngles.remove(index);
 
-        components.add(childBranch);
+        Branch childBranch = new Branch(this, angle, 1, 1);
+
+        branches.add(childBranch);
+        components.add((BranchComponent) childBranch);
     }
 
+    /**
+     * @return int Returns number of branches that are above this branch and
+     *         connected to it
+     */
+    private int getNumberOfBranchesAbove() {
+        if (branches.size() == 0)
+            return 0;
+        int num = 0;
+        for (Branch branch : branches) {
+            num += 1 + branch.getNumberOfBranchesAbove();
+        }
+        return num;
+    }
+
+    /**
+     * @return float Returns shade amount betweeen 0 -1 (1 means 100% shade and no
+     *         light reaches this branch. 0 means 0% shade and all light reaches
+     *         this branch)
+     */
+    private float shade() {
+        int branchesAbove = getNumberOfBranchesAbove();
+        if (branchesAbove > 10)
+            return 1;
+        return (float) branchesAbove / 10;
+    }
+
+    /**
+     * @return float Returns the amount of light reaching this branch
+     */
+    public float getLight() {
+        return Simulation.simulation.getEnvironment().getLight() * (1 - shade());
+    }
+
+    /**
+     * Gets water from parent organ and returns it's amount
+     */
+    public float getWater() {
+        return parentOrgan.getWater() * 0.9f;
+    }
+
+    /**
+     * Adds a given amount of glucose to this branch
+     * 
+     * @param glucose The amount of glucose to add
+     */
+    public void addGlucose(float glucose) {
+        this.glucose += glucose;
+    }
+
+    public float getGlucose(float amount) {
+        if (glucose >= amount) {
+            glucose -= amount;
+            return amount;
+        }
+        return 0;
+    }
+
+    /**
+     * Removes a given component from this branch
+     * 
+     * @param component BranchComponent The component to remove
+     */
+    public void removeComponent(BranchComponent component) {
+        components.remove(component);
+    }
+
+    /**
+     * Creates a new leaf and adds it to the components list
+     */
     private void makeLeaf() {
         BranchComponent leaf = new Leaf(this);
         components.add(leaf);
     }
 
+    /**
+     * Creates a new flower and adds it to the components list
+     */
     private void makeFlower() {
         BranchComponent flower = new Flower(this);
         components.add(flower);
