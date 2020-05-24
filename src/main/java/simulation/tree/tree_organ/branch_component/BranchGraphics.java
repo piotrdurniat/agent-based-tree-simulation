@@ -59,7 +59,7 @@ class BranchGraphics extends ComponentGraphics {
         g2d.translate(endX, endY);
         g2d.rotate(angle);
 
-        for (BranchComponent component : components) {
+        for (BranchComponent component : new ArrayList<BranchComponent>(components)) {
             component.getGraphics().show(g);
         }
 
