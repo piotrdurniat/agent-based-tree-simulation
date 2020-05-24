@@ -8,7 +8,7 @@ import simulation.tree.Tree;
 public class Simulation {
 
     public static Simulation simulation;
-    public static Random random = new Random(1);
+    public static Random random = new Random(3);
 
     private final Tree tree;
     private final Environment environment;
