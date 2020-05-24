@@ -3,7 +3,7 @@ package simulation;
 public class Environment {
 
     private static float light = Configuration.environmentLight;
-    private static float environmentC02 = Configuration.environmentC02;
+    private static float environmentCO2 = Configuration.environmentCO2;
     private static float environmentWater = Configuration.environmentWater;
 
     public float getLight() {
@@ -11,7 +11,7 @@ public class Environment {
     }
 
     public float getCarbonDioxide() {
-        return environmentC02;
+        return environmentCO2;
     }
 
     public float getWater() {

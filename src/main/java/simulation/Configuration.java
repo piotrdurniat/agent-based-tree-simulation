@@ -13,7 +13,7 @@ public class Configuration {
     public static float leafMinLight;
 
     public static float environmentLight;
-    public static float environmentC02;
+    public static float environmentCO2;
     public static float environmentWater;
 
     public static float newBranchProbability;
@@ -32,7 +32,7 @@ public class Configuration {
             leafMinLight = Float.parseFloat(getProperty("leafMinLight"));
 
             environmentLight = Float.parseFloat(getProperty("environmentLight"));
-            environmentC02 = Float.parseFloat(getProperty("environmentC02"));
+            environmentCO2 = Float.parseFloat(getProperty("environmentCO2"));
             environmentWater = Float.parseFloat(getProperty("environmentWater"));
 
             newBranchProbability = Float.parseFloat(getProperty("newBranchProbability"));
