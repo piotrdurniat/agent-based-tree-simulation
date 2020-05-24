@@ -18,10 +18,18 @@ public class Branch extends BranchComponent {
 
     private ArrayList<BranchComponent> components;
     private ArrayList<Branch> branches;
+    private ArrayList<Float> availableAngles;
 
-    private ArrayList<Float> angleOptions;
-
+    private static final ArrayList<Float> angles = new ArrayList<>();
     private static final int maxBranchNum = Configuration.branchingFactor;
+    private static final float angleBetweenBranches = Configuration.angleBetweenBranches;
+
+    static {
+        float minAngle = -(0.5f * (maxBranchNum - 1)) * angleBetweenBranches;
+        for (int i = 0; i < maxBranchNum; i++) {
+            angles.add(minAngle + i * angleBetweenBranches);
+        }
+    }
 
     /**
      * Constructor for creating a Branch object
@@ -37,17 +45,15 @@ public class Branch extends BranchComponent {
         this.length = length;
         this.diameter = diameter;
 
-        angleOptions = new ArrayList<Float>();
-
-        for (int i = 0; i < maxBranchNum / 2; i++) {
-            angleOptions.add((float) ((2 * i + 1) * Math.PI / 16));
-            angleOptions.add((float) (-(2 * i + 1) * Math.PI / 16));
-        }
+        availableAngles = new ArrayList<Float>(angles);
 
         components = new ArrayList<BranchComponent>();
         branches = new ArrayList<Branch>();
 
         graphics = new BranchGraphics(this);
+
+        // Initial glucose value
+        this.glucose = Configuration.glucosePerBranch * 0.3f;
     }
 
     @Override
@@ -56,7 +62,7 @@ public class Branch extends BranchComponent {
             component.evaluateTurn();
         }
 
-        if (length > 50 && randomEvent(Configuration.newBranchProbability)) {
+        if (randomEvent(Configuration.newBranchProbability)) {
             this.makeBranch();
         }
 
@@ -68,11 +74,34 @@ public class Branch extends BranchComponent {
         // this.makeFlower();
         // }
 
-        if (length < Configuration.maxBranchLength) {
-            length += 0.2;
-        }
+        grow();
+    }
 
-        diameter += 0.008;
+    /**
+     * Makes the branch grow
+     */
+    private void grow() {
+        growInLength();
+        growInDiameter();
+    }
+
+    /**
+     * Makes this branch grow in length
+     * 
+     * Branch grows faster if it has a lot of water and glucose
+     */
+    private void growInLength() {
+        length += getWater() * getGlucose(1) / 5;
+    }
+
+    /**
+     * Makes the branch grow in diameter.
+     * 
+     * The less water it has, the slower it will grow in diameter, so that the top
+     * branches are thiner
+     */
+    private void growInDiameter() {
+        diameter += 0.006 * getWater();
     }
 
     /**
@@ -117,13 +146,17 @@ public class Branch extends BranchComponent {
      * Creates new branch and adds it to this branch's components
      */
     private void makeBranch() {
-        if (angleOptions.size() == 0) {
+        if (availableAngles.size() == 0) {
             return;
         }
 
-        int index = random.nextInt(angleOptions.size());
-        float angle = (float) angleOptions.get(index);
-        angleOptions.remove(index);
+        if (getGlucose(Configuration.glucosePerBranch) == 0) {
+            return;
+        }
+
+        int index = random.nextInt(availableAngles.size());
+        float angle = (float) availableAngles.get(index);
+        availableAngles.remove(index);
 
         Branch childBranch = new Branch(this, angle, 1, 1);
 
@@ -178,6 +211,14 @@ public class Branch extends BranchComponent {
      */
     public void addGlucose(float glucose) {
         this.glucose += glucose;
+    }
+
+    public float getGlucose(float amount) {
+        if (glucose >= amount) {
+            glucose -= amount;
+            return amount;
+        }
+        return 0;
     }
 
     /**

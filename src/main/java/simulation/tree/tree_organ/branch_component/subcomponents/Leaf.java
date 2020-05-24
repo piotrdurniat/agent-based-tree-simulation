@@ -6,18 +6,40 @@ import simulation.tree.tree_organ.branch_component.Branch;
 
 public class Leaf extends BranchSubcomponent {
 
+    private float length;
+
     private static float minLight = Configuration.leafMinLight;
 
     public Leaf(Branch parentBranch) {
         super(parentBranch);
-
         graphics = new LeafGraphics(this);
+        length = 1;
     }
 
     @Override
     public void evaluateTurn() {
         checkLightConditions();
+        grow();
         doPhotosynthesis();
+    }
+
+    /**
+     * @return float Returns the length of this leaf
+     */
+    float getLength() {
+        return length;
+    }
+
+    /**
+     * Makes the leaf grow in length
+     */
+    void grow() {
+        if (length >= Configuration.maxLeafLength)
+            return;
+        float glucose = parentBranch.getGlucose(1);
+        if (glucose > 0) {
+            length += 0.2;
+        }
     }
 
     /**

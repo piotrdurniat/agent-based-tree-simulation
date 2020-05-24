@@ -20,8 +20,12 @@ public class Configuration {
     public static float newLeafProbability;
     public static float newFlowerProbability;
 
-    public static float maxBranchLength;
+    public static float glucosePerBranch;
+
     public static int branchingFactor;
+    public static float angleBetweenBranches;
+
+    public static float maxLeafLength;
 
     static void loadConfig() {
         try {
@@ -39,8 +43,12 @@ public class Configuration {
             newLeafProbability = Float.parseFloat(getProperty("newLeafProbability"));
             newFlowerProbability = Float.parseFloat(getProperty("newFlowerProbability"));
 
-            maxBranchLength = Float.parseFloat(getProperty("maxBranchLength"));
+            glucosePerBranch = Float.parseFloat(getProperty("glucosePerBranch"));
+
             branchingFactor = Integer.parseInt(getProperty("branchingFactor"));
+            angleBetweenBranches = Float.parseFloat(getProperty("angleBetweenBranches"));
+
+            maxLeafLength = Float.parseFloat(getProperty("maxLeafLength"));
 
         } catch (Exception exception) {
             System.out.println(exception);
