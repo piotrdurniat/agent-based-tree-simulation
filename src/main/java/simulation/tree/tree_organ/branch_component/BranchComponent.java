@@ -7,7 +7,7 @@ import simulation.tree.tree_organ.TreeOrgan;
 
 public abstract class BranchComponent extends TreeOrgan {
 
-    private TreeOrgan parentOrgan;
+    TreeOrgan parentOrgan;
     protected Random random;
 
     /**

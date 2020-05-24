@@ -14,4 +14,10 @@ public class Leaf extends BranchSubcomponent {
 
     }
 
+    /**
+     * Takes water from parent branch and returns it's amount
+     */
+    public float getWater() {
+        return parentBranch.getWater();
+    }
 }

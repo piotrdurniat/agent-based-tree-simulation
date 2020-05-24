@@ -17,5 +17,7 @@ public abstract class TreeOrgan {
         return graphics;
     }
 
+    abstract public float getWater();
+
     public abstract void evaluateTurn();
 }

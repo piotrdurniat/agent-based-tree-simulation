@@ -124,4 +124,8 @@ public class Branch extends BranchComponent {
         BranchComponent flower = new Flower(this);
         components.add(flower);
     }
+
+    public float getWater() {
+        return parentOrgan.getWater() * 0.9f;
+    }
 }
