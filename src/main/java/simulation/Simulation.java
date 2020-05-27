@@ -1,9 +1,11 @@
 package simulation;
 
+import java.util.List;
 import java.util.Random;
 
 import simulation.graphics.Window;
 import simulation.tree.Tree;
+import simulation.tree.tree_organ.TreeOrgan;
 
 public class Simulation {
 
@@ -28,6 +30,13 @@ public class Simulation {
      */
     public Environment getEnvironment() {
         return environment;
+    }
+
+    /**
+     * @return List of all tree organs on the tree
+     */
+    public List<TreeOrgan> getTreeOrgans() {
+        return tree.getOrgans();
     }
 
     /**

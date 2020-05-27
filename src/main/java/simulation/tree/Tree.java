@@ -2,10 +2,13 @@ package simulation.tree;
 
 // import simulation.tree.tree_organ.branch_component.BranchComponent;
 import simulation.tree.tree_organ.branch_component.Branch;
+import simulation.tree.tree_organ.branch_component.BranchComponent;
 import simulation.graphics.IGraphicalComponent;
 import simulation.tree.tree_organ.TreeOrgan;
 import simulation.tree.tree_organ.RootSystem;
 import java.awt.Graphics;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Tree implements IGraphicalComponent {
 
@@ -36,6 +39,21 @@ public class Tree implements IGraphicalComponent {
      */
     public TreeOrgan getRootSystem() {
         return rootSystem;
+    }
+
+    /**
+     * @return List of all organs in the tree
+     */
+    public List<TreeOrgan> getOrgans() {
+        List<TreeOrgan> organs = new ArrayList<>();
+        organs.add(trunk);
+        organs.add(rootSystem);
+
+        List<BranchComponent> trunkComponents = ((Branch) trunk).getAllComponentsAbove();
+
+        organs.addAll(trunkComponents);
+
+        return organs;
     }
 
     /**

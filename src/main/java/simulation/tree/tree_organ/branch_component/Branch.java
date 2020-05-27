@@ -1,6 +1,7 @@
 package simulation.tree.tree_organ.branch_component;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.awt.Graphics;
 
 import simulation.Configuration;
@@ -17,11 +18,11 @@ public class Branch extends BranchComponent {
     private float diameter;
     private float glucose;
 
-    private ArrayList<BranchComponent> components;
-    private ArrayList<Branch> branches;
-    private ArrayList<Float> availableAngles;
+    private List<BranchComponent> components;
+    private List<Branch> branches;
+    private List<Float> availableAngles;
 
-    private static final ArrayList<Float> angles = new ArrayList<>();
+    private static final List<Float> angles = new ArrayList<>();
     private static final int maxBranchNum = Configuration.branchingFactor;
     private static final float angleBetweenBranches = Configuration.angleBetweenBranches;
     private static final float growthSpeed = Configuration.branchGrowthSpeed;
@@ -137,8 +138,22 @@ public class Branch extends BranchComponent {
     /**
      * @return All sub-components of this branch
      */
-    ArrayList<BranchComponent> getComponents() {
+    List<BranchComponent> getComponents() {
         return components;
+    }
+
+    /**
+     * @return List of all components that are above this branch and connected to it
+     */
+    public List<BranchComponent> getAllComponentsAbove() {
+        List<BranchComponent> allComponents = new ArrayList<>();
+
+        allComponents.addAll(components);
+
+        for (Branch branch : branches) {
+            allComponents.addAll(branch.getAllComponentsAbove());
+        }
+        return allComponents;
     }
 
     /**

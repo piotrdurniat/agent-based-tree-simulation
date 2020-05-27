@@ -9,6 +9,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Color;
 import java.util.ArrayList;
+import java.util.List;
 import java.awt.BasicStroke;
 
 class BranchGraphics implements IGraphicalComponent {
@@ -50,7 +51,7 @@ class BranchGraphics implements IGraphicalComponent {
         float endX = (float) end.getX();
         float endY = (float) end.getY();
 
-        ArrayList<BranchComponent> components = branch.getComponents();
+        List<BranchComponent> components = branch.getComponents();
 
         float angle = branch.getAngle();
 

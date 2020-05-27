@@ -30,6 +30,7 @@ public class IntervalTasks extends TimerTask {
     public void run() {
         if (turnNum >= Configuration.maxIterations) {
             timer.cancel();
+            Results.print();
         }
 
         tree.evaluateTurn();
