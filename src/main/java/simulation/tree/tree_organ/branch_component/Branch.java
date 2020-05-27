@@ -110,7 +110,7 @@ public class Branch extends BranchComponent {
      * @param probability The probability of returning true
      * @return True or false value based on probability
      */
-    boolean randomEvent(float probability) {
+    private boolean randomEvent(float probability) {
         return random.nextFloat() < probability;
     }
 

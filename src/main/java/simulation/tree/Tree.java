@@ -30,15 +30,8 @@ public class Tree implements IGraphicalComponent {
     /**
      * @return The trunk of this tree
      */
-    public TreeOrgan getTrunk() {
+    TreeOrgan getTrunk() {
         return trunk;
-    }
-
-    /**
-     * @return The rootSystem of this tree
-     */
-    public TreeOrgan getRootSystem() {
-        return rootSystem;
     }
 
     /**

@@ -3,8 +3,8 @@ package simulation;
 public class Environment {
 
     private static float light = Configuration.environmentLight;
-    private static float environmentCO2 = Configuration.environmentCO2;
-    private static float environmentWater = Configuration.environmentWater;
+    private static float CO2 = Configuration.environmentCO2;
+    private static float water = Configuration.environmentWater;
 
     /**
      * Returns the configured amount of light
@@ -21,7 +21,7 @@ public class Environment {
      * @return The amount of CO2
      */
     public float getCarbonDioxide() {
-        return environmentCO2;
+        return CO2;
     }
 
     /**
@@ -30,6 +30,6 @@ public class Environment {
      * @return The amount of water
      */
     public float getWater() {
-        return environmentWater;
+        return water;
     }
 }
