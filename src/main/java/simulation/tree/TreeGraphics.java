@@ -1,11 +1,10 @@
 package simulation.tree;
 
-import simulation.graphics.ComponentGraphics;
-import simulation.graphics.GraphicalComponent;
+import simulation.graphics.IGraphicalComponent;
 
 import java.awt.Graphics;
 
-class TreeGraphics extends ComponentGraphics {
+class TreeGraphics implements IGraphicalComponent {
 
     private Tree tree;
 
@@ -20,11 +19,10 @@ class TreeGraphics extends ComponentGraphics {
      * Draws the tree and invokes draw function on it's organs
      */
     public void show(Graphics g) {
-
-        GraphicalComponent trunk = (GraphicalComponent) tree.getTrunk();
+        IGraphicalComponent trunk = (IGraphicalComponent) tree.getTrunk();
 
         g.translate(0, -20);
-        trunk.getGraphics().show(g);
-
+        trunk.show(g);
     }
+
 }

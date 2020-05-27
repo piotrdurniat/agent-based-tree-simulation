@@ -3,15 +3,14 @@ package simulation.tree.tree_organ.branch_component;
 import java.util.Random;
 
 import simulation.Simulation;
-import simulation.graphics.ComponentGraphics;
-import simulation.graphics.GraphicalComponent;
+import simulation.graphics.IGraphicalComponent;
 import simulation.tree.tree_organ.TreeOrgan;
 
-public abstract class BranchComponent extends TreeOrgan implements GraphicalComponent {
+public abstract class BranchComponent extends TreeOrgan implements IGraphicalComponent {
 
     TreeOrgan parentOrgan;
     protected Random random;
-    protected ComponentGraphics graphics;
+    protected IGraphicalComponent graphics;
 
     /**
      * Constructor for creating TreeOrgan objects
@@ -29,12 +28,4 @@ public abstract class BranchComponent extends TreeOrgan implements GraphicalComp
     public TreeOrgan getParentOrgan() {
         return parentOrgan;
     }
-
-    /**
-     * @return The graphics object responsible for drawing this tree organ
-     */
-    public ComponentGraphics getGraphics() {
-        return graphics;
-    }
-
 }

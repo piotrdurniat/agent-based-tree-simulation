@@ -1,5 +1,7 @@
 package simulation.tree.tree_organ.branch_component.subcomponents;
 
+import java.awt.Graphics;
+
 import simulation.Configuration;
 import simulation.tree.tree_organ.branch_component.Branch;
 
@@ -49,5 +51,12 @@ public class Fruit extends BranchSubcomponent {
      */
     public float getRipeness() {
         return ripeness;
+    }
+
+    /**
+     * Draws the fruit on the window
+     */
+    public void show(Graphics g) {
+        graphics.show(g);
     }
 }

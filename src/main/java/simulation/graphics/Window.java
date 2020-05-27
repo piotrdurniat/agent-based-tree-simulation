@@ -52,6 +52,6 @@ public class Window extends JPanel {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         g.translate(frame.getWidth() / 2, frame.getHeight());
-        tree.getGraphics().show(g);
+        tree.show(g);
     }
 }

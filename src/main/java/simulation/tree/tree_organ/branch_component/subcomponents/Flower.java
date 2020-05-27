@@ -1,5 +1,7 @@
 package simulation.tree.tree_organ.branch_component.subcomponents;
 
+import java.awt.Graphics;
+
 import simulation.Configuration;
 import simulation.tree.tree_organ.branch_component.Branch;
 
@@ -78,4 +80,10 @@ public class Flower extends BranchSubcomponent {
         return diameter;
     }
 
+    /**
+     * Draws the flower on the window
+     */
+    public void show(Graphics g) {
+        graphics.show(g);
+    }
 }

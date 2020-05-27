@@ -1,5 +1,7 @@
 package simulation.tree.tree_organ.branch_component.subcomponents;
 
+import java.awt.Graphics;
+
 import simulation.Configuration;
 import simulation.Simulation;
 import simulation.tree.tree_organ.branch_component.Branch;
@@ -69,4 +71,10 @@ public class Leaf extends BranchSubcomponent {
         parentBranch.addGlucose(glucose);
     }
 
+    /**
+     * Draws the leaf on the window
+     */
+    public void show(Graphics g) {
+        graphics.show(g);
+    }
 }

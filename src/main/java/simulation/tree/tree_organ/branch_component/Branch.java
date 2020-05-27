@@ -1,6 +1,7 @@
 package simulation.tree.tree_organ.branch_component;
 
 import java.util.ArrayList;
+import java.awt.Graphics;
 
 import simulation.Configuration;
 import simulation.Simulation;
@@ -296,5 +297,12 @@ public class Branch extends BranchComponent {
     public void makeFruit() {
         BranchComponent fruit = new Fruit(this);
         components.add(fruit);
+    }
+
+    /**
+     * Draws the branch on the window
+     */
+    public void show(Graphics g) {
+        graphics.show(g);
     }
 }

@@ -2,17 +2,17 @@ package simulation.tree;
 
 // import simulation.tree.tree_organ.branch_component.BranchComponent;
 import simulation.tree.tree_organ.branch_component.Branch;
-import simulation.graphics.ComponentGraphics;
-import simulation.graphics.GraphicalComponent;
+import simulation.graphics.IGraphicalComponent;
 import simulation.tree.tree_organ.TreeOrgan;
 import simulation.tree.tree_organ.RootSystem;
+import java.awt.Graphics;
 
-public class Tree implements GraphicalComponent {
+public class Tree implements IGraphicalComponent {
 
     private TreeOrgan trunk;
     private TreeOrgan rootSystem;
 
-    private ComponentGraphics graphics;
+    private IGraphicalComponent graphics;
 
     /**
      * Constructor for creating object of type Tree
@@ -22,15 +22,6 @@ public class Tree implements GraphicalComponent {
         trunk = new Branch(rootSystem, 0, 1, 1);
 
         graphics = new TreeGraphics(this);
-    }
-
-    /**
-     * Returns the graphics object for drawing this tree
-     * 
-     * @return The graphics object
-     */
-    public ComponentGraphics getGraphics() {
-        return graphics;
     }
 
     /**
@@ -54,4 +45,12 @@ public class Tree implements GraphicalComponent {
         trunk.evaluateTurn();
         rootSystem.evaluateTurn();
     }
+
+    /**
+     * Draws this tree on the window
+     **/
+    public void show(Graphics g) {
+        graphics.show(g);
+    }
+
 }

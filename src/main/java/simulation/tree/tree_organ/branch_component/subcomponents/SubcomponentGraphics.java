@@ -3,10 +3,10 @@ package simulation.tree.tree_organ.branch_component.subcomponents;
 import java.util.Random;
 
 import simulation.Simulation;
-import simulation.graphics.ComponentGraphics;
+import simulation.graphics.IGraphicalComponent;
 import simulation.tree.tree_organ.branch_component.Branch;
 
-public abstract class SubcomponentGraphics extends ComponentGraphics {
+public abstract class SubcomponentGraphics implements IGraphicalComponent {
     private Random random;
 
     private float position;

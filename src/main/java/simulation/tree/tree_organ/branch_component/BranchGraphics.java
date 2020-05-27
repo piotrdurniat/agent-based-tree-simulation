@@ -1,6 +1,6 @@
 package simulation.tree.tree_organ.branch_component;
 
-import simulation.graphics.ComponentGraphics;
+import simulation.graphics.IGraphicalComponent;
 import java.awt.geom.Point2D;
 import java.awt.geom.Line2D;
 
@@ -11,7 +11,7 @@ import java.awt.Color;
 import java.util.ArrayList;
 import java.awt.BasicStroke;
 
-class BranchGraphics extends ComponentGraphics {
+class BranchGraphics implements IGraphicalComponent {
 
     Branch branch;
 
@@ -60,7 +60,7 @@ class BranchGraphics extends ComponentGraphics {
         g2d.rotate(angle);
 
         for (BranchComponent component : new ArrayList<BranchComponent>(components)) {
-            component.getGraphics().show(g);
+            component.show(g);
         }
 
         g2d.rotate(-angle);
