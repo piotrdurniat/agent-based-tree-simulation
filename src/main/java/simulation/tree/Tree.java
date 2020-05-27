@@ -3,13 +3,14 @@ package simulation.tree;
 // import simulation.tree.tree_organ.branch_component.BranchComponent;
 import simulation.tree.tree_organ.branch_component.Branch;
 import simulation.graphics.ComponentGraphics;
+import simulation.graphics.GraphicalComponent;
 import simulation.tree.tree_organ.TreeOrgan;
 import simulation.tree.tree_organ.RootSystem;
-import java.util.ArrayList;
 
-public class Tree {
+public class Tree implements GraphicalComponent {
 
-    private ArrayList<TreeOrgan> treeOrgans;
+    private TreeOrgan trunk;
+    private TreeOrgan rootSystem;
 
     private ComponentGraphics graphics;
 
@@ -17,17 +18,10 @@ public class Tree {
      * Constructor for creating object of type Tree
      */
     public Tree() {
-
-        treeOrgans = new ArrayList<TreeOrgan>();
-
-        TreeOrgan root = new RootSystem();
-        TreeOrgan trunk = new Branch(root, 0, 1, 1);
-
-        treeOrgans.add(root);
-        treeOrgans.add(trunk);
+        rootSystem = new RootSystem();
+        trunk = new Branch(rootSystem, 0, 1, 1);
 
         graphics = new TreeGraphics(this);
-
     }
 
     /**
@@ -38,18 +32,24 @@ public class Tree {
     }
 
     /**
-     * @return ArrayList<TreeOrgan> Returns this tree's organs
+     * @return TreeOrgan Returns this tree's trunk
      */
-    public ArrayList<TreeOrgan> getTreeOrgans() {
-        return treeOrgans;
+    public TreeOrgan getTrunk() {
+        return trunk;
+    }
+
+    /**
+     * @return TreeOrgan Returns this tree's root system
+     */
+    public TreeOrgan getRootSystem() {
+        return rootSystem;
     }
 
     /**
      * Evaluates the turn of every tree organ
      */
     public void evaluateTurn() {
-        for (TreeOrgan organ : treeOrgans) {
-            organ.evaluateTurn();
-        }
+        trunk.evaluateTurn();
+        rootSystem.evaluateTurn();
     }
 }

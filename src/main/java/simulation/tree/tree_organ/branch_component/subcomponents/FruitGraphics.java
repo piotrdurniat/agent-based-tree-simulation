@@ -23,6 +23,9 @@ public class FruitGraphics extends SubcomponentGraphics {
         this.fruit = fruit;
     }
 
+    /**
+     * @return Color Returns color value based on ripeness (0 - green 1 - red)
+     */
     Color getColor() {
         float ripeness = fruit.getRipeness();
         if (ripeness > 1)

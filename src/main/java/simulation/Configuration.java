@@ -24,6 +24,7 @@ public class Configuration {
     public static float glucosePerBranch;
     public static int branchingFactor;
     public static float angleBetweenBranches;
+    public static float branchGrowthSpeed;
 
     // Properties related to leaf:
     public static float leafMinLight;
@@ -40,6 +41,9 @@ public class Configuration {
     public static float glucosePerFruit;
     public static float fruitRipeningSpeed;
     public static float fruitSize;
+
+    // Properties related to rootSystem
+    public static float rootSystemGrowthSpeed;
 
     /**
      * Reads configuration file and parses property values to variables
@@ -61,6 +65,7 @@ public class Configuration {
             glucosePerBranch = Float.parseFloat(getProperty("glucosePerBranch"));
             branchingFactor = Integer.parseInt(getProperty("branchingFactor"));
             angleBetweenBranches = Float.parseFloat(getProperty("angleBetweenBranches"));
+            branchGrowthSpeed = Float.parseFloat(getProperty("branchGrowthSpeed"));
 
             maxLeafLength = Float.parseFloat(getProperty("maxLeafLength"));
             leafGrowthSpeed = Float.parseFloat(getProperty("leafGrowthSpeed"));
@@ -74,6 +79,8 @@ public class Configuration {
             glucosePerFruit = Float.parseFloat(getProperty("glucosePerFruit"));
             fruitRipeningSpeed = Float.parseFloat(getProperty("fruitRipeningSpeed"));
             fruitSize = Float.parseFloat(getProperty("fruitSize"));
+
+            rootSystemGrowthSpeed = Float.parseFloat(getProperty("rootSystemGrowthSpeed"));
 
         } catch (Exception exception) {
             System.out.println(exception);

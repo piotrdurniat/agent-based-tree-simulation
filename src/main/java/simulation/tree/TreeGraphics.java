@@ -1,10 +1,9 @@
 package simulation.tree;
 
 import simulation.graphics.ComponentGraphics;
-import simulation.tree.tree_organ.TreeOrgan;
+import simulation.graphics.GraphicalComponent;
 
 import java.awt.Graphics;
-import java.util.ArrayList;
 
 class TreeGraphics extends ComponentGraphics {
 
@@ -22,11 +21,10 @@ class TreeGraphics extends ComponentGraphics {
      */
     public void show(Graphics g) {
 
-        ArrayList<TreeOrgan> organs = tree.getTreeOrgans();
+        GraphicalComponent trunk = (GraphicalComponent) tree.getTrunk();
 
-        for (TreeOrgan organ : new ArrayList<TreeOrgan>(organs)) {
-            g.translate(0, -20);
-            organ.getGraphics().show(g);
-        }
+        g.translate(0, -20);
+        trunk.getGraphics().show(g);
+
     }
 }

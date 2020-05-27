@@ -23,6 +23,7 @@ public class Branch extends BranchComponent {
     private static final ArrayList<Float> angles = new ArrayList<>();
     private static final int maxBranchNum = Configuration.branchingFactor;
     private static final float angleBetweenBranches = Configuration.angleBetweenBranches;
+    private static final float growthSpeed = Configuration.branchGrowthSpeed;
 
     static {
         float minAngle = -(0.5f * (maxBranchNum - 1)) * angleBetweenBranches;
@@ -85,7 +86,7 @@ public class Branch extends BranchComponent {
      * Branch grows faster if it has a lot of water and glucose
      */
     private void growInLength() {
-        length += getWater() * getGlucose(1) / 5;
+        length += (getWater() + getGlucose(1)) * growthSpeed;
     }
 
     /**
