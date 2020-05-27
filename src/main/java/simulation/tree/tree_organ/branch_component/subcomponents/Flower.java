@@ -11,6 +11,11 @@ public class Flower extends BranchSubcomponent {
     private static float growthSpeeed = Configuration.flowerGrowthSpeed;
     private static float glucosePerFruit = Configuration.glucosePerFruit;
 
+    /**
+     * Constuctor for creating a new Flower object
+     * 
+     * @param parentBranch The branch on which the flower grows
+     */
     public Flower(Branch parentBranch) {
         super(parentBranch);
 
@@ -67,7 +72,7 @@ public class Flower extends BranchSubcomponent {
     }
 
     /**
-     * @return float Returns the diameter of this flower
+     * @return The diameter of this flower
      */
     public float getDiameter() {
         return diameter;

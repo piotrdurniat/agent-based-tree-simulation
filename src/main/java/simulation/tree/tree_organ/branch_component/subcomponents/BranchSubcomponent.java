@@ -6,11 +6,17 @@ import simulation.tree.tree_organ.branch_component.BranchComponent;
 public abstract class BranchSubcomponent extends BranchComponent {
     Branch parentBranch;
 
+    /**
+     * @param parentBranch The branch from which this branch component grows
+     */
     public BranchSubcomponent(Branch parentBranch) {
         super(parentBranch);
         this.parentBranch = parentBranch;
     }
 
+    /**
+     * @return The parent branch
+     */
     public Branch getParentBranch() {
         return parentBranch;
     }

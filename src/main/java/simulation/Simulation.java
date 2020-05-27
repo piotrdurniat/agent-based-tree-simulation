@@ -23,6 +23,9 @@ public class Simulation {
         IntervalTasks.setup(tree);
     }
 
+    /**
+     * @return The environment object
+     */
     public Environment getEnvironment() {
         return environment;
     }

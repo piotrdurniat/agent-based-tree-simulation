@@ -24,14 +24,14 @@ public abstract class BranchComponent extends TreeOrgan implements GraphicalComp
     }
 
     /**
-     * @return TreeOrgan Returns parent tree organ
+     * @return The parent tree organ
      */
     public TreeOrgan getParentOrgan() {
         return parentOrgan;
     }
 
     /**
-     * @return Graphics Returns graphics object for drawing this tree organ
+     * @return The graphics object responsible for drawing this tree organ
      */
     public ComponentGraphics getGraphics() {
         return graphics;

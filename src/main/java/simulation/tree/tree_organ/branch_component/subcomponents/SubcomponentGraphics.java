@@ -26,8 +26,8 @@ public abstract class SubcomponentGraphics extends ComponentGraphics {
     }
 
     /**
-     * @return float Returns vertical position of this component relative to the end
-     *         of the branch
+     * @return The vertical position of this component relative to the end of the
+     *         branch
      */
     protected float getY() {
         Branch branch = component.getParentBranch();

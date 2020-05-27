@@ -8,6 +8,11 @@ public class Fruit extends BranchSubcomponent {
     private float ripeness;
     private static float ripeningSpeed = Configuration.fruitRipeningSpeed;
 
+    /**
+     * Constuctor for creating a new Fruit object
+     * 
+     * @param parentBranch The branch on which the fruit grows
+     */
     public Fruit(Branch parentBranch) {
         super(parentBranch);
 
@@ -40,7 +45,7 @@ public class Fruit extends BranchSubcomponent {
     }
 
     /**
-     * @return float Returns the ripeness amount (between 0 and 1)
+     * @return The ripeness amount (between 0 and 1)
      */
     public float getRipeness() {
         return ripeness;

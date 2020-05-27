@@ -25,28 +25,30 @@ public class Tree implements GraphicalComponent {
     }
 
     /**
-     * @return ComponentGraphics Returns graphics object for drawing this Tree
+     * Returns the graphics object for drawing this tree
+     * 
+     * @return The graphics object
      */
     public ComponentGraphics getGraphics() {
         return graphics;
     }
 
     /**
-     * @return TreeOrgan Returns this tree's trunk
+     * @return The trunk of this tree
      */
     public TreeOrgan getTrunk() {
         return trunk;
     }
 
     /**
-     * @return TreeOrgan Returns this tree's root system
+     * @return The rootSystem of this tree
      */
     public TreeOrgan getRootSystem() {
         return rootSystem;
     }
 
     /**
-     * Evaluates the turn of every tree organ
+     * Evaluates turns of trunk and rootSystem
      */
     public void evaluateTurn() {
         trunk.evaluateTurn();

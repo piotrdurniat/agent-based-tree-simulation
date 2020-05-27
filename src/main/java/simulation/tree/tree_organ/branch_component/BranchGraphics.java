@@ -25,7 +25,7 @@ class BranchGraphics extends ComponentGraphics {
     }
 
     /**
-     * @return Point2D.Float Returns branch end point relative to (0, 0)
+     * @return Branch end point relative to (0, 0)
      */
     Point2D.Float getEnd() {
         float angle = branch.getAngle();

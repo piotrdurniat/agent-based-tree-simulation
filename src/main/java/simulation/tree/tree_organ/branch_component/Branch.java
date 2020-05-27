@@ -57,6 +57,9 @@ public class Branch extends BranchComponent {
         this.glucose = Configuration.glucosePerBranch * 0.3f;
     }
 
+    /**
+     * Performs all actions in this turn
+     */
     @Override
     public void evaluateTurn() {
         for (BranchComponent component : new ArrayList<BranchComponent>(components)) {
@@ -102,44 +105,43 @@ public class Branch extends BranchComponent {
     /**
      * Returns boolean value with a given probability
      * 
-     * @param probability float The probability of returning true
-     * @return boolean Returns true or false with a given probability
+     * @param probability The probability of returning true
+     * @return True or false value based on probability
      */
     boolean randomEvent(float probability) {
         return random.nextFloat() < probability;
     }
 
     /**
-     * @return float Returns the angle of this branch
+     * @return The angle of this branch
      */
     float getAngle() {
         return angle;
     }
 
     /**
-     * @return float Returns the length of this branch
+     * @return The length of this branch
      */
     public float getLength() {
         return length;
     }
 
     /**
-     * @return float Returns the diameter of this branch
+     * @return The diameter of this branch
      */
     float getDiameter() {
         return diameter;
     }
 
     /**
-     * @return ArrayList<BranchComponent> Returns all sub components of this branch
+     * @return All sub-components of this branch
      */
     ArrayList<BranchComponent> getComponents() {
         return components;
     }
 
     /**
-     * @return int Returns number of branches that are above this branch and
-     *         connected to it
+     * @return Number of branches that are above this branch and connected to it
      */
     private int getNumberOfBranchesAbove() {
         if (branches.size() == 0)
@@ -152,9 +154,13 @@ public class Branch extends BranchComponent {
     }
 
     /**
-     * @return float Returns shade amount betweeen 0 -1 (1 means 100% shade and no
-     *         light reaches this branch. 0 means 0% shade and all light reaches
-     *         this branch)
+     * Returns shade level (between 0 and 1)
+     * 
+     * 1 means that no light reaches the branch.
+     * 
+     * 0 means that all of the light from the environment reaches the branch.
+     * 
+     * @return Shade level
      */
     private float shade() {
         int branchesAbove = getNumberOfBranchesAbove();
@@ -164,7 +170,7 @@ public class Branch extends BranchComponent {
     }
 
     /**
-     * @return float Returns the amount of light reaching this branch
+     * @return The amount of light reaching this branch
      */
     public float getLight() {
         return Simulation.simulation.getEnvironment().getLight() * (1 - shade());
@@ -186,6 +192,11 @@ public class Branch extends BranchComponent {
         this.glucose += glucose;
     }
 
+    /**
+     * @param amount The amount of glucose a method caller is requesting
+     * 
+     * @return The requested amount of glucose or 0 if the amount is not available.
+     */
     public float getGlucose(float amount) {
         if (glucose >= amount) {
             glucose -= amount;
@@ -197,7 +208,7 @@ public class Branch extends BranchComponent {
     /**
      * Removes a given component from this branch
      * 
-     * @param component BranchComponent The component to remove
+     * @param component The component to remove
      */
     public void removeComponent(BranchComponent component) {
         components.remove(component);
@@ -279,6 +290,9 @@ public class Branch extends BranchComponent {
         components.add(flower);
     }
 
+    /**
+     * Creates a new fruit and adds it to the components list
+     */
     public void makeFruit() {
         BranchComponent fruit = new Fruit(this);
         components.add(fruit);

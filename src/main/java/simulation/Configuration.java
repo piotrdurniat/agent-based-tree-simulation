@@ -88,10 +88,10 @@ public class Configuration {
     }
 
     /**
-     * Returns property from configuration file with given name
+     * Returns the value of requested property
      * 
      * @param propertyName Name of the property
-     * @return String The string value of property with given name
+     * @return The poperty value
      */
     public static String getProperty(String propertyName) {
         return properties.getProperty(propertyName);

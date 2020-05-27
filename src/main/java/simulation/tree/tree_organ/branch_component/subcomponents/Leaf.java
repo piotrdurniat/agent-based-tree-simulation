@@ -10,6 +10,11 @@ public class Leaf extends BranchSubcomponent {
 
     private static float minLight = Configuration.leafMinLight;
 
+    /**
+     * Constuctor for creating a new Leaf object
+     * 
+     * @param parentBranch The branch on which the leaf grows
+     */
     public Leaf(Branch parentBranch) {
         super(parentBranch);
         graphics = new LeafGraphics(this);
@@ -24,7 +29,7 @@ public class Leaf extends BranchSubcomponent {
     }
 
     /**
-     * @return float Returns the length of this leaf
+     * @return The length of this leaf
      */
     float getLength() {
         return length;

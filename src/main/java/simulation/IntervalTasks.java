@@ -13,6 +13,8 @@ public class IntervalTasks extends TimerTask {
     public static Timer timer;
 
     /**
+     * Sets up the timer to invoke a method at regular intervals
+     * 
      * @param tree Tree object passed to evaluate it's turns on every interval
      */
     public static void setup(Tree tree) {
@@ -23,7 +25,7 @@ public class IntervalTasks extends TimerTask {
     }
 
     /**
-     * Interval function invoked after the set amount of time
+     * Method which is invoked at regular intervals
      */
     public void run() {
         if (turnNum >= Configuration.maxIterations) {
