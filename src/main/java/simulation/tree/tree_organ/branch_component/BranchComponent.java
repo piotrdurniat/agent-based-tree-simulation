@@ -13,7 +13,7 @@ public abstract class BranchComponent extends TreeOrgan implements IGraphicalCom
     protected IGraphicalComponent graphics;
 
     /**
-     * Constructor for creating TreeOrgan objects
+     * Constructor for creating a TreeOrgan object
      * 
      * @param parentOrgan Tree organ from which this component grows
      */
@@ -23,6 +23,8 @@ public abstract class BranchComponent extends TreeOrgan implements IGraphicalCom
     }
 
     /**
+     * Returns the organ from which this component grows
+     * 
      * @return The parent tree organ
      */
     public TreeOrgan getParentOrgan() {

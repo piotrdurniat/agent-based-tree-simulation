@@ -28,6 +28,8 @@ public class Tree implements IGraphicalComponent {
     }
 
     /**
+     * Returns the trunk of this tree
+     * 
      * @return The trunk of this tree
      */
     TreeOrgan getTrunk() {
@@ -35,7 +37,9 @@ public class Tree implements IGraphicalComponent {
     }
 
     /**
-     * @return List of all organs in the tree
+     * Returns the list of all organs in this tree
+     * 
+     * @return The list of all organs in this tree
      */
     public List<TreeOrgan> getOrgans() {
         List<TreeOrgan> organs = new ArrayList<>();

@@ -24,6 +24,9 @@ public class Flower extends BranchSubcomponent {
         graphics = new FlowerGraphics(this);
     }
 
+    /**
+     * Evaluates the turn of this root flower
+     */
     @Override
     public void evaluateTurn() {
         checkLightConditions();
@@ -34,7 +37,7 @@ public class Flower extends BranchSubcomponent {
     /**
      * Checks all requirements for turning into fruit.
      * 
-     * If all requirements are met, than invokes a function for changing into fruit
+     * If all requirements are met, than invokes a method for changing into fruit
      */
     private void tryToTurnIntoFruit() {
         if (diameter <= maxDiameter)
@@ -74,6 +77,8 @@ public class Flower extends BranchSubcomponent {
     }
 
     /**
+     * Returns the diameter of this flower
+     * 
      * @return The diameter of this flower
      */
     public float getDiameter() {

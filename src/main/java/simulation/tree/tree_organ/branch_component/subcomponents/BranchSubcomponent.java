@@ -7,6 +7,8 @@ public abstract class BranchSubcomponent extends BranchComponent {
     Branch parentBranch;
 
     /**
+     * The constructor for creating a BranchSubcomponent object
+     * 
      * @param parentBranch The branch from which this branch component grows
      */
     public BranchSubcomponent(Branch parentBranch) {
@@ -15,6 +17,8 @@ public abstract class BranchSubcomponent extends BranchComponent {
     }
 
     /**
+     * Returns the branch from which this branch component grows
+     * 
      * @return The parent branch
      */
     public Branch getParentBranch() {

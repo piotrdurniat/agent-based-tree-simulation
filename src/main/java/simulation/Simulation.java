@@ -26,6 +26,8 @@ public class Simulation {
     }
 
     /**
+     * Returns the environment object of this simulation
+     * 
      * @return The environment object
      */
     public Environment getEnvironment() {
@@ -33,14 +35,18 @@ public class Simulation {
     }
 
     /**
-     * @return List of all tree organs on the tree
+     * Returns The list of all tree organs on the tree in this simulation
+     * 
+     * @return The list of all tree organs on the tree
      */
     public List<TreeOrgan> getTreeOrgans() {
         return tree.getOrgans();
     }
 
     /**
-     * @param args Main function arguments
+     * Main program method
+     * 
+     * @param args Main method arguments
      */
     public static void main(final String[] args) {
         Configuration.loadConfig();

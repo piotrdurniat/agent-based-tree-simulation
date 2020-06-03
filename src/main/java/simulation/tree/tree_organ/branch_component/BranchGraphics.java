@@ -17,7 +17,7 @@ class BranchGraphics implements IGraphicalComponent {
     Branch branch;
 
     /**
-     * Constructor for creating BranchGraphics object
+     * Constructor for creating a BranchGraphics object
      * 
      * @param branch Branch to draw
      */
@@ -26,7 +26,9 @@ class BranchGraphics implements IGraphicalComponent {
     }
 
     /**
-     * @return Branch end point relative to (0, 0)
+     * Returns the branch end point relative to (0, 0)
+     * 
+     * @return The branch end point
      */
     Point2D.Float getEnd() {
         float angle = branch.getAngle();
@@ -38,7 +40,7 @@ class BranchGraphics implements IGraphicalComponent {
     }
 
     /**
-     * Draws this branch and invokes draw function on all subcomponents
+     * Draws this branch and invokes draw method on all subcomponents
      */
     public void show(Graphics g) {
         Graphics2D g2d = (Graphics2D) g;

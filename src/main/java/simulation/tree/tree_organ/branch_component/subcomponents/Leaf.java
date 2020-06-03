@@ -23,6 +23,9 @@ public class Leaf extends BranchSubcomponent {
         length = 1;
     }
 
+    /**
+     * Evaluates this leaf's turn
+     */
     @Override
     public void evaluateTurn() {
         checkLightConditions();
@@ -31,6 +34,8 @@ public class Leaf extends BranchSubcomponent {
     }
 
     /**
+     * Returns the length of this leaf
+     * 
      * @return The length of this leaf
      */
     float getLength() {

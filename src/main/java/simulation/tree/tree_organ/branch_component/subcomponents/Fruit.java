@@ -22,6 +22,9 @@ public class Fruit extends BranchSubcomponent {
         ripeness = 0;
     }
 
+    /**
+     * Evaluates the turn of this fruit
+     */
     @Override
     public void evaluateTurn() {
         checkIfRipe();

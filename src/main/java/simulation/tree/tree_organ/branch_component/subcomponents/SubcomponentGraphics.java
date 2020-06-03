@@ -26,8 +26,10 @@ public abstract class SubcomponentGraphics implements IGraphicalComponent {
     }
 
     /**
-     * @return The vertical position of this component relative to the end of the
-     *         branch
+     * Returns the vertical position of this component relative to the end of the
+     * branch
+     * 
+     * @return The vertical position of this component
      */
     protected float getY() {
         Branch branch = component.getParentBranch();

@@ -115,6 +115,8 @@ public class Branch extends BranchComponent {
     }
 
     /**
+     * Returns the angle of this branch which is relative to it's parent organ
+     * 
      * @return The angle of this branch
      */
     float getAngle() {
@@ -122,6 +124,8 @@ public class Branch extends BranchComponent {
     }
 
     /**
+     * Returns the length of this branch
+     * 
      * @return The length of this branch
      */
     public float getLength() {
@@ -129,6 +133,8 @@ public class Branch extends BranchComponent {
     }
 
     /**
+     * Returns the diameter of this branch
+     * 
      * @return The diameter of this branch
      */
     float getDiameter() {
@@ -136,14 +142,19 @@ public class Branch extends BranchComponent {
     }
 
     /**
-     * @return All sub-components of this branch
+     * Returns all of the sub-components of this branch
+     * 
+     * @return The list of all subcomponents
      */
     List<BranchComponent> getComponents() {
         return components;
     }
 
     /**
-     * @return List of all components that are above this branch and connected to it
+     * Returns the list of all components that are above this branch and connected
+     * to it
+     * 
+     * @return The list of all components above
      */
     public List<BranchComponent> getAllComponentsAbove() {
         List<BranchComponent> allComponents = new ArrayList<>();
@@ -157,7 +168,9 @@ public class Branch extends BranchComponent {
     }
 
     /**
-     * @return Number of branches that are above this branch and connected to it
+     * Returns the number of branches that are above this branch and connected to it
+     * 
+     * @return Number of branches above
      */
     private int getNumberOfBranchesAbove() {
         if (branches.size() == 0)
@@ -186,6 +199,8 @@ public class Branch extends BranchComponent {
     }
 
     /**
+     * Returns the amoutn of light reaching this branch
+     * 
      * @return The amount of light reaching this branch
      */
     public float getLight() {
@@ -209,9 +224,11 @@ public class Branch extends BranchComponent {
     }
 
     /**
+     * Returns the requested amount of glucose or 0 if the amount is not available.
+     * 
      * @param amount The amount of glucose a method caller is requesting
      * 
-     * @return The requested amount of glucose or 0 if the amount is not available.
+     * @return The adequate amount of glucose
      */
     public float getGlucose(float amount) {
         if (glucose >= amount) {

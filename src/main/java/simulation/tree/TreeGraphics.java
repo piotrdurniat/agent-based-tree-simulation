@@ -9,6 +9,8 @@ class TreeGraphics implements IGraphicalComponent {
     private Tree tree;
 
     /**
+     * Constuctor for creating a TreeGraphics object
+     * 
      * @param tree Tree object to draw
      */
     TreeGraphics(Tree tree) {
@@ -16,7 +18,7 @@ class TreeGraphics implements IGraphicalComponent {
     }
 
     /**
-     * Draws the tree and invokes draw function on it's organs
+     * Draws the tree and invokes draw method on it's organs
      */
     public void show(Graphics g) {
         IGraphicalComponent trunk = (IGraphicalComponent) tree.getTrunk();
