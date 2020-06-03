@@ -43,7 +43,11 @@ public class Simulation {
      * @param args Main function arguments
      */
     public static void main(final String[] args) {
-        Configuration.loadConfig();
+        try {
+            Configuration.loadConfig();
+        } catch (Exception exception) {
+            System.out.println(exception);
+        }
         simulation = new Simulation();
     }
 

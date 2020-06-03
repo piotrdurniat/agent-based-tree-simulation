@@ -48,43 +48,39 @@ public class Configuration {
     /**
      * Reads configuration file and parses property values to variables
      */
-    static void loadConfig() {
-        try {
-            inputStream = new FileInputStream(filePath);
-            properties.load(inputStream);
+    static void loadConfig() throws Exception {
 
-            maxIterations = Integer.parseInt(getProperty("maxIterations"));
+        inputStream = new FileInputStream(filePath);
+        properties.load(inputStream);
 
-            environmentLight = Float.parseFloat(getProperty("environmentLight"));
-            environmentCO2 = Float.parseFloat(getProperty("environmentCO2"));
-            environmentWater = Float.parseFloat(getProperty("environmentWater"));
+        maxIterations = Integer.parseInt(getProperty("maxIterations"));
 
-            newBranchProbability = Float.parseFloat(getProperty("newBranchProbability"));
-            newLeafProbability = Float.parseFloat(getProperty("newLeafProbability"));
-            newFlowerProbability = Float.parseFloat(getProperty("newFlowerProbability"));
-            glucosePerBranch = Float.parseFloat(getProperty("glucosePerBranch"));
-            branchingFactor = Integer.parseInt(getProperty("branchingFactor"));
-            angleBetweenBranches = Float.parseFloat(getProperty("angleBetweenBranches"));
-            branchGrowthSpeed = Float.parseFloat(getProperty("branchGrowthSpeed"));
+        environmentLight = Float.parseFloat(getProperty("environmentLight"));
+        environmentCO2 = Float.parseFloat(getProperty("environmentCO2"));
+        environmentWater = Float.parseFloat(getProperty("environmentWater"));
 
-            maxLeafLength = Float.parseFloat(getProperty("maxLeafLength"));
-            leafGrowthSpeed = Float.parseFloat(getProperty("leafGrowthSpeed"));
-            leafMinLight = Float.parseFloat(getProperty("leafMinLight"));
+        newBranchProbability = Float.parseFloat(getProperty("newBranchProbability"));
+        newLeafProbability = Float.parseFloat(getProperty("newLeafProbability"));
+        newFlowerProbability = Float.parseFloat(getProperty("newFlowerProbability"));
+        glucosePerBranch = Float.parseFloat(getProperty("glucosePerBranch"));
+        branchingFactor = Integer.parseInt(getProperty("branchingFactor"));
+        angleBetweenBranches = Float.parseFloat(getProperty("angleBetweenBranches"));
+        branchGrowthSpeed = Float.parseFloat(getProperty("branchGrowthSpeed"));
 
-            glucosePerFlower = Float.parseFloat(getProperty("glucosePerFlower"));
-            flowerMinLight = Float.parseFloat(getProperty("flowerMinLight"));
-            flowerMaxDiameter = Float.parseFloat(getProperty("flowerMaxDiameter"));
-            flowerGrowthSpeed = Float.parseFloat(getProperty("flowerGrowthSpeed"));
+        maxLeafLength = Float.parseFloat(getProperty("maxLeafLength"));
+        leafGrowthSpeed = Float.parseFloat(getProperty("leafGrowthSpeed"));
+        leafMinLight = Float.parseFloat(getProperty("leafMinLight"));
 
-            glucosePerFruit = Float.parseFloat(getProperty("glucosePerFruit"));
-            fruitRipeningSpeed = Float.parseFloat(getProperty("fruitRipeningSpeed"));
-            fruitSize = Float.parseFloat(getProperty("fruitSize"));
+        glucosePerFlower = Float.parseFloat(getProperty("glucosePerFlower"));
+        flowerMinLight = Float.parseFloat(getProperty("flowerMinLight"));
+        flowerMaxDiameter = Float.parseFloat(getProperty("flowerMaxDiameter"));
+        flowerGrowthSpeed = Float.parseFloat(getProperty("flowerGrowthSpeed"));
 
-            rootSystemGrowthSpeed = Float.parseFloat(getProperty("rootSystemGrowthSpeed"));
+        glucosePerFruit = Float.parseFloat(getProperty("glucosePerFruit"));
+        fruitRipeningSpeed = Float.parseFloat(getProperty("fruitRipeningSpeed"));
+        fruitSize = Float.parseFloat(getProperty("fruitSize"));
 
-        } catch (Exception exception) {
-            System.out.println(exception);
-        }
+        rootSystemGrowthSpeed = Float.parseFloat(getProperty("rootSystemGrowthSpeed"));
     }
 
     /**
